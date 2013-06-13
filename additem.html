@@ -9,20 +9,21 @@
 		<meta name="keywords" content="html5, mobile development, project 1, adventurer's stash keeper" />
 		<meta name="robots" content="noindex, nofollow" />
 		<meta name="viewport" content="user-scalable=no, width=device-width" />
+		<link href="css/styles.css" rel="stylesheet" />
 	</head>
 	<body>
 	<H1>Stash Keeper</h1>
-	<form action="#" method="post">
+	<form action="#" method="post" id="form">
 		<fieldset>
 			<legend>Log an Item into the Stash</legend>
 				<ul>
-					<li><label for="itemName">Item Name:</label><input type id="iName" /></li>
+					<li><label for="itemName">Item Name:</label><input type id="itemName" /></li>
 				</ul>
 				<ul>
 					<li>Type:
 						<ul>
-							<li><input type="radio" value="weapon" id="typeWeapon" /><label for="typeWeapon">Weapon</label></li>
-							<li><input type="radio" value="armor"  id="typeArmor" /><label for="typeArmor">Armor</label></li>
+							<li><input type="radio" value="weapon" id="typeWeapon" name="type"/><label for="typeWeapon">Weapon</label></li>
+							<li><input type="radio" value="armor"  id="typeArmor" name="type"/><label for="typeArmor">Armor</label></li>
 						</ul>
 					</li>
 				</ul>
@@ -45,9 +46,9 @@
 				<ul>
 					<li>Quality:
 						<ul>
-							<li><input type="checkbox" value="common" id="qualityCommon"/><label for="qualityCommon">Common</label></li>
-							<li><input type="checkbox" value="magical" id="qualityMagical"/><label for="qualityMagical">Magical</label></li>
-							<li><input type="checkbox" value="legendary" id="qualityLegendary"/><label for="qualityLegendary">Legendary</label></li>
+							<li><input type="checkbox" value="common" id="qualityCommon" name="quality"/><label for="qualityCommon">Common</label></li>
+							<li><input type="checkbox" value="magical" id="qualityMagical" name="quality"/><label for="qualityMagical">Magical</label></li>
+							<li><input type="checkbox" value="legendary" id="qualityLegendary" name="quality"/><label for="qualityLegendary">Legendary</label></li>
 						</ul>
 					</li>
 				</ul>
@@ -60,14 +61,12 @@
 				<ul>
 					<li><label for="dropped">Dropped From:</label><textarea id="dropped" rows="4" cols="30"></textarea>
 				</ul>
-				<ul>
-					<li><input type="hidden" value="true" /></li>
-				</ul>
 		</fieldset>	
-			<input type="submit" value="Stash it!" />
+			<input type="submit" id="submit" value="Stash it!" />
 	</form>	
 	<footer>
-		<p><a href="#">Clear Stored Data</a>&nbsp;&nbsp;<a href="#">Display Data</a></p>
-	</footer>				
+		<p><a href="#">Clear Stored Data</a>&nbsp;&nbsp;&nbsp;<a href="#">Display Data</a></p>
+	</footer>
+	<script src="js/main.js" type="text/javascript"></script>
 	</body>
 </html>
