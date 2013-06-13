@@ -1,10 +1,12 @@
+window.addEventListener("DOMContentLoaded");
+
 function $(x){
 	var element = document.getElementById(x);
 	return element;
 }
 
 function getType() {
-	var itemType = document.form[0].type;
+	var itemType = document.form.type;
 	for(var i=0; i < itemType.length; i++){
 		if(itemType[i].checked) {
 			typeValue = itemType[i].value;
@@ -12,17 +14,8 @@ function getType() {
 	}
 }
 
-//function getClassification () {
-//	var itemClass = document.form[0].classification;
-//	for(var i=0; i < itemClass.length; i++){
-//		if(itemClass[i].checked) {
-//			typeClass = itemClass[i].value;
-//		}
-//	}
-//}
-
 function getQuality() {
-	var itemQuality = document.form[0].quality;
+	var itemQuality = document.form.quality;
 	for(var i=0; i < itemQuality.length; i++){
 		if(itemQuality[i].checked) {
 			typeQuality = itemQuality[i].value;
@@ -32,7 +25,7 @@ function getQuality() {
 
 
 function saveData(){
-	var storeNumber = Math.floor(Math.random()*10000001);
+	var storeNumber = Math.floor(Math.random()*100000001);
 	getType();
 	getClassification();
 	getQuality();
@@ -51,7 +44,6 @@ function saveData(){
 
 //Global Variables
 var typeValue,
-	typeClass,
 	typeQuality
 ;
 
