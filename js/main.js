@@ -23,7 +23,6 @@ function getQuality() {
 	}
 }
 
-
 function saveData(){
 	var storeNumber = Math.floor(Math.random()*100000001);
 	getType();
@@ -37,15 +36,22 @@ function saveData(){
 	object.dateStashed 		= ["Date Stashed:", $("stashDate").value];
 	object.droppedFrom 		= ["Dropped From:", $("dropped").value];
 	localStorage.setItem(storeNumber, JSON.stringify(object));
+	window.location.reload();
 	alert("Stash Successful!");
+
 }
 
 function pullData () {
+	if(localStorage.length === 0){
+		alert("There are not items currently in your stash");
+	}
+	toggle("on");
 	var displayDiv = document.createElement("div");
-	displayDiv.setAttribute("number", "item");
+	displayDiv.setAttribute("storeNumber", "object");
 	var createList = document.createElement("ul");
 	displayDiv.appendChild(createList);
 	document.body.appendChild(displayDiv);
+	$("object").style.display = "block";
 	for(var i=0, j=localStorage.length; i<j; i++){
 		var createLi = document.createElement("li");
 		createList.appendChild(createLi);
@@ -57,20 +63,56 @@ function pullData () {
 		for(var n in listObject){
 			var createSubLi = document.createElement("li");
 			createSubList.appendChild(createSubLi);
-			var objSubText = listObject[n][0]+" "+listObject[1];
+			var objSubText = listObject[n][0]+"  "+listObject[n][1];
 			createSubLi.innerHTML = objSubText;
 		}	
 	}
 }
+
+function toggle(n){
+	switch(n){
+		case "on":
+			$("itemForm").style.display = "none";
+			$("clearData").style.display = "inline";
+			$("displayData").style.display = "none";
+			$("stashMore").style.display = "inline"
+			break;
+		case "off":
+			$(forms[0]).style.display = "block";
+			$("clearData").style.display = "inline";
+			$("displayData").style.display = "inline";
+			$(addNew).style.display = "none";
+			$("object").style.display = "none";
+			break;	
+		default:
+			return false;
+	}
+}
+
+function clearItems () {
+	if(localStorage.length === 0){
+		alert("No items to clear");
+	} else {
+		localStorage.clear();
+		alert("Stash has been cleared");
+		window.location.reload();
+		return false;
+	}
+}
+
+
 
 //Global Variables
 var typeValue,
 	typeQuality
 ;
 
+//The Call
 var submit = $("submit");
 submit.addEventListener("click", saveData);
 var displayData = $("displayData");
 displayData.addEventListener("click", pullData);
+var clearData = $("clearData");
+clearData.addEventListener("click", clearItems);
 
 });
