@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded");
+window.addEventListener("DOMContentLoaded", function(){
 
 function $(x){
 	var element = document.getElementById(x);
@@ -50,3 +50,5 @@ var typeValue,
 
 var submit = $("submit");
 submit.addEventListener("click", saveData);
+
+});
