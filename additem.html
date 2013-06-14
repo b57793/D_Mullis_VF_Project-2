@@ -17,6 +17,9 @@
 		<fieldset>
 			<legend>Log an Item into the Stash</legend>
 				<ul>
+					<li id="archetypeSelect"><label for="archSelect">Choose Item Archetype:</label><br /></li>
+				</ul>
+				<ul>
 					<li><label for="itemName">Item Name:</label><input type id="itemName" /></li>
 				</ul>
 				<ul>
@@ -41,8 +44,8 @@
 							<option value="staff">Staff</option>
 						</select>
 					</ul>
-				</ul>
-				</li>
+					</li>
+				</ul>				
 				<ul>
 					<li>Quality:
 						<ul>
@@ -59,7 +62,7 @@
 					<li><label for="stashDate">Date Stashed:</label><input type="date" id="stashDate"></li>
 				</ul>
 				<ul>
-					<li><label for="dropped">Dropped From:</label><textarea id="dropped" rows="4" cols="30"></textarea>
+					<li><label for="dropped">Details:</label><textarea id="dropped" rows="4" cols="30"></textarea>
 				</ul>
 		</fieldset>	
 			<input type="button" id="submit" value="Stash it!" />

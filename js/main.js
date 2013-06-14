@@ -38,16 +38,15 @@ function saveData(){
 	localStorage.setItem(storeNumber, JSON.stringify(object));
 	window.location.reload();
 	alert("Stash Successful!");
-
 }
 
 function pullData () {
 	if(localStorage.length === 0){
-		alert("There are not items currently in your stash");
+		alert("There are currently no items in your stash");
 	}
 	toggle("on");
 	var displayDiv = document.createElement("div");
-	displayDiv.setAttribute("storeNumber", "object");
+	displayDiv.setAttribute("id", "object");
 	var createList = document.createElement("ul");
 	displayDiv.appendChild(createList);
 	document.body.appendChild(displayDiv);
@@ -89,7 +88,7 @@ function toggle(n){
 	}
 }
 
-function clearItems () {
+function clearItems(){
 	if(localStorage.length === 0){
 		alert("No items to clear");
 	} else {
@@ -100,12 +99,28 @@ function clearItems () {
 	}
 }
 
-
+function createArchetype(){
+	var formArchtype = document.getElementsByTagName(document.forms[0]);
+	var	chooseLi = $("archetypeSelect");
+	var	createSelect = document.createElement("select");
+		createSelect.setAttribute("id", "aGroup");		
+	for(var i=0, j=archetype.length; i<j; i++){
+		var createOption = document.createElement("option");
+		var createText = archetype[i];
+		createOption.setAttribute("value", createText);
+		createOption.innerHTML = createText;
+		createSelect.appendChild(createOption);
+	}
+	chooseLi.appendChild(createSelect);
+}
 
 //Global Variables
+var 	archetype = ["--Choose Item Archetype--", "Warrior", "Rogue", "Mage"]
 var typeValue,
 	typeQuality
 ;
+createArchetype();
+
 
 //The Call
 var submit = $("submit");
@@ -114,5 +129,4 @@ var displayData = $("displayData");
 displayData.addEventListener("click", pullData);
 var clearData = $("clearData");
 clearData.addEventListener("click", clearItems);
-
 });
